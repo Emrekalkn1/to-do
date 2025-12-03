@@ -1,0 +1,367 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 200;
+    display: flex;
+    justify-content: flex-end;
+    backdrop-filter: blur(2px);
+}
+
+.panel {
+    width: 650px;
+    background: white;
+    height: 100%;
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.closeBtn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.closeBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.tabs {
+    display: flex;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+    background: white;
+}
+
+.tab {
+    padding: 16px 20px;
+    background: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--primary);
+}
+
+.activeTab {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+.content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.section {
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sectionTitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: var(--text-main);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.subtaskList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.subtask {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    border: 1px solid transparent;
+}
+
+.subtask:hover {
+    background: #f8f9fa;
+    border-color: var(--border);
+}
+
+.subtaskContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.subtaskTitle {
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.subtaskMeta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.subtaskDate {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    background: #e8f4f8;
+    border-radius: 4px;
+}
+
+.subtaskPriority {
+    font-size: 11px;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.checkbox,
+.checkboxChecked {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: white;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.checkbox:hover {
+    border-color: var(--success);
+}
+
+.checkboxChecked {
+    background: var(--success);
+    border-color: var(--success);
+    color: white;
+}
+
+.completedText {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.addSubtaskForm {
+    margin-top: 12px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 2px dashed var(--primary);
+}
+
+.addSubtaskInput {
+    width: 100%;
+    border: 2px solid var(--primary);
+    padding: 10px;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.subtaskFormRow {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.dateInput,
+.prioritySelect {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.subtaskFormButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.saveBtn {
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.saveBtn:hover {
+    background: var(--primary-hover);
+}
+
+.cancelSubtaskBtn {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+}
+
+.cancelSubtaskBtn:hover {
+    background: var(--bg-secondary);
+}
+
+.addSubtaskBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.addSubtaskBtn:hover {
+    color: var(--primary);
+}
+
+.commentInputContainer {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    background: white;
+    margin-bottom: 20px;
+}
+
+.commentInput {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    min-height: 80px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.postBtn {
+    background: var(--primary);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    margin-top: 10px;
+    float: right;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.postBtn:hover {
+    background: var(--primary-hover);
+}
+
+.commentList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.comment {
+    display: flex;
+    gap: 12px;
+}
+
+.commentAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--indigo);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.commentContent {
+    flex: 1;
+}
+
+.commentHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.commentAuthor {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.commentTime {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.commentText {
+    font-size: 14px;
+    color: var(--text-main);
+    line-height: 1.5;
+}
