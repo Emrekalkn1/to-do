@@ -38,7 +38,11 @@ export async function POST(req: Request) {
         return response
 
     } catch (error) {
-        console.error(error)
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+        console.error('Register error:', error)
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+        return NextResponse.json({ 
+            error: 'Internal Server Error',
+            details: process.env.NODE_ENV === 'development' ? errorMessage : undefined
+        }, { status: 500 })
     }
 }
