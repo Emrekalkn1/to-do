@@ -17,6 +17,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Generate Prisma Client
+# Set dummy DATABASE_URL for build (Prisma needs it for validation)
+ENV DATABASE_URL="file:./prisma/dev.db"
 RUN npx prisma generate
 
 # Build Next.js
