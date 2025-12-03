@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   
-  // Docker için standalone output
-  output: 'standalone',
+  // Railway Nixpacks için standalone output gerekmez
+  // output: 'standalone',  // Railway Nixpacks için kapalı
   
   // Security headers
   async headers() {
