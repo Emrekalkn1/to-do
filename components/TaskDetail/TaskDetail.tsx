@@ -2,7 +2,7 @@
 
 import { X, CheckSquare, MessageSquare, Plus, Square, Calendar, AlertCircle } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import styles from './TaskDetail.module.css'
 
 const PRIORITY_OPTIONS = ['Critical', 'High', 'Medium', 'Low', 'Very Low', 'Urgent']
@@ -15,7 +15,7 @@ const PRIORITY_COLORS: Record<string, string> = {
     'Urgent': '#8b0000',
 }
 
-export default function TaskDetail() {
+function TaskDetailContent() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const taskId = searchParams.get('taskId')
@@ -222,5 +222,13 @@ export default function TaskDetail() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function TaskDetail() {
+    return (
+        <Suspense fallback={null}>
+            <TaskDetailContent />
+        </Suspense>
     )
 }
